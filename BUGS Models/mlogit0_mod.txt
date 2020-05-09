@@ -1,0 +1,31 @@
+model
+	{
+  
+	#  PRIORS
+          #rho ~ dexp(mu)
+  	  #log(mu)<- 0
+	  for(t in 1:2){delta[t] ~ dnorm(0,0.01)}     
+ 
+        #tau.b[1:K,1:K] ~ dwish(G[,], K)
+        #sigma[1:K,1:K] <- inverse(tau.b[1:K,1:K])
+
+	 # LIKELIHOOD	
+	  for (i in 1 : N) {     # loop around elections
+     	# Multinomial model
+         S[i,1:K] ~ dmulti(p[i,1:K],n[i])
+         n[i] <- sum(S[i,])
+
+         for (k in 1:K) {     # loop around parties
+	    pow.V[i,k] <- pow(V[i,k],2)
+	    cut[i,k] <-  V[i,k]-sum(pow.V[i,])
+
+            p[i,k]        <-  phi[i,k] / sum(phi[i,])
+            log(phi[i,k]) <-  rho[i,k]*log(V[i,k])
+            log(rho[i,k]) <-  delta[1]*((mean(gini[,]))) + delta[2]*(gini[i,k]/sum(gini[i,]))
+
+                       }
+    }  
+  }
+	
+}  
+	
