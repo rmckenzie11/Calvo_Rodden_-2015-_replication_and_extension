@@ -1,0 +1,3 @@
+# Calvo_Rodden_2015_replication_and_extension
+
+"The Achilles Heel of Multiparty Democracies", by Ernesto Calvo and Jonathan Rodden (2014) shows that majoritarianbiases increase with the number of parties, and majoritarian systems harm small parties when their vote is more dispersed than average, and large parties when their vote is more concentrated than average. They built a mathematical model of the relationship between geographic distribution and electoral representation, using MC methods, and then analyzed UK elections over the past 60 years to determine which parties benefit from majoritarian bias. I've extended their paper by updating data, and adjusting specifications to look at the impact of regional parties.
